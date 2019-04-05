@@ -21,15 +21,35 @@ public interface ExpressionListener extends ParseTreeListener {
    */
   void exitRoot(ExpressionParser.RootContext ctx);
   /**
-   * Enter a parse tree produced by {@link ExpressionParser#sum}.
+   * Enter a parse tree produced by {@link ExpressionParser#expression}.
    * @param ctx the parse tree
    */
-  void enterSum(ExpressionParser.SumContext ctx);
+  void enterExpression(ExpressionParser.ExpressionContext ctx);
   /**
-   * Exit a parse tree produced by {@link ExpressionParser#sum}.
+   * Exit a parse tree produced by {@link ExpressionParser#expression}.
    * @param ctx the parse tree
    */
-  void exitSum(ExpressionParser.SumContext ctx);
+  void exitExpression(ExpressionParser.ExpressionContext ctx);
+  /**
+   * Enter a parse tree produced by {@link ExpressionParser#term}.
+   * @param ctx the parse tree
+   */
+  void enterTerm(ExpressionParser.TermContext ctx);
+  /**
+   * Exit a parse tree produced by {@link ExpressionParser#term}.
+   * @param ctx the parse tree
+   */
+  void exitTerm(ExpressionParser.TermContext ctx);
+  /**
+   * Enter a parse tree produced by {@link ExpressionParser#atom}.
+   * @param ctx the parse tree
+   */
+  void enterAtom(ExpressionParser.AtomContext ctx);
+  /**
+   * Exit a parse tree produced by {@link ExpressionParser#atom}.
+   * @param ctx the parse tree
+   */
+  void exitAtom(ExpressionParser.AtomContext ctx);
   /**
    * Enter a parse tree produced by {@link ExpressionParser#primitive}.
    * @param ctx the parse tree
@@ -40,4 +60,14 @@ public interface ExpressionListener extends ParseTreeListener {
    * @param ctx the parse tree
    */
   void exitPrimitive(ExpressionParser.PrimitiveContext ctx);
+  /**
+   * Enter a parse tree produced by {@link ExpressionParser#number}.
+   * @param ctx the parse tree
+   */
+  void enterNumber(ExpressionParser.NumberContext ctx);
+  /**
+   * Exit a parse tree produced by {@link ExpressionParser#number}.
+   * @param ctx the parse tree
+   */
+  void exitNumber(ExpressionParser.NumberContext ctx);
 }

@@ -28,11 +28,23 @@ import Configuration;
  *
  * For more information, see reading 18 about parser generators, which explains
  * how to use Antlr and has links to reference information.
+ *
  */
-root : sum EOF;
-sum : primitive ('+' primitive)*;
-primitive : NUMBER | '(' sum ')';
-NUMBER : [0-9]+;
+
+root       : expression EOF;
+expression : term (PLUS term)*; // Sum
+term       : atom (TIMES atom)*; // Product
+atom       : primitive | LPAREN expression RPAREN;
+primitive  : IDENT | number;
+number     : INTEGER? (DOT INTEGER+)?;
+
+PLUS       : '+';
+TIMES      : '*';
+LPAREN     : '(';
+RPAREN     : ')';
+IDENT      : [a-zA-Z_][a-zA-Z0-9_]*;
+INTEGER    : [0-9]+;
+DOT        : '.';
 
 /* Tell Antlr to ignore spaces around tokens. */
-SPACES : [ ]+ -> skip;
+SPACES     : [ ]+ -> skip;
